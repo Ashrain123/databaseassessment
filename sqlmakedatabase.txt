@@ -1,0 +1,25 @@
+CREATE TABLE Team (
+  Team_id INTEGER PRIMARY KEY,
+  Team_Name TEXT,
+  position TEXT,
+  losses INTEGER,
+  win INTEGER,
+  UNIQUE(Team_Name, position, losses, win)
+);
+
+CREATE TABLE player (
+  Player_id INTEGER PRIMARY KEY,
+  player_name TEXT,
+  player_height DECIMAL(4, 1),
+  shoe_size DECIMAL(3, 1),
+  Team_id INTEGER,
+  FOREIGN KEY(Team_id) REFERENCES Team(Team_id)
+);
+
+CREATE TABLE player_state (
+  Player_state INTEGER PRIMARY KEY,
+  Country TEXT,
+  city TEXT,
+  Player_id INTEGER,
+  FOREIGN KEY(Player_id) REFERENCES player(Player_id)
+);
